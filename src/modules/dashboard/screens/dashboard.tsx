@@ -1,4 +1,4 @@
-import CardComponent from "../components/card.components";
+import CardComponent from "../components/card.component";
 
 function DashboardScreen() {
   return (

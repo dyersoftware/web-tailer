@@ -11,7 +11,7 @@ function CardComponent() {
         </p>
         <div className="justify-end card-actions">
           <button className="btn btn-primary text-white">
-            <Link to="/dashboard">Visit</Link>
+            <Link to="/tms">Visit</Link>
           </button>
         </div>
       </div>

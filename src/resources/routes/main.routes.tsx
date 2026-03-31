@@ -3,6 +3,7 @@ import AuthLayout from "../layouts/auth.layout";
 import DashboardLayout from "../layouts/dashboard.layout";
 import authRoutes from "../../modules/routes/auth.routes";
 import dashboardRoutes from "../../modules/dashboard/routes/dashboard.routes";
+import tmsRoutes from "../../modules/tailor-management-system/routes/tms.routes";
 
 function MainRoutes() {
   return (
@@ -14,6 +15,11 @@ function MainRoutes() {
       </Route>
       <Route path="/dashboard" element={<DashboardLayout />}>
         {dashboardRoutes.map((route, i) => (
+          <Route key={i} {...route} />
+        ))}
+      </Route>
+      <Route path="/tms" element={<DashboardLayout />}>
+        {tmsRoutes.map((route, i) => (
           <Route key={i} {...route} />
         ))}
       </Route>
