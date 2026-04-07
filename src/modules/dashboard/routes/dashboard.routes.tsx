@@ -1,4 +1,4 @@
-import DashboardScreen from "../screens/dashboard";
+import DashboardScreen from "../screens/dashboard.screen";
 
 const dashboardRoutes = [{ index: true, element: <DashboardScreen /> }];
 

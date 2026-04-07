@@ -1,5 +1,5 @@
-import LoginScreen from "../auth/screens/login.screen";
-import RegisterScreen from "../auth/screens/register.screen";
+import LoginScreen from "../screens/login.screen";
+import RegisterScreen from "../screens/register.screen";
 
 const authRoutes = [
   { index: true, element: <LoginScreen /> },
