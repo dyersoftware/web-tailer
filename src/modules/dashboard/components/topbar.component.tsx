@@ -1,4 +1,7 @@
+import { useLogout } from "../../../resources/hooks/use-logout.hook";
+
 function TopBarComponent() {
+  const { logout, loading } = useLogout();
   return (
     <div>
       <div className="navbar bg-base-300 shadow-sm  z-10">
@@ -96,7 +99,20 @@ function TopBarComponent() {
                 <a>Settings</a>
               </li>
               <li>
-                <a>Logout</a>
+                <button
+                  onClick={logout}
+                  disabled={loading}
+                  className="text-left w-full"
+                >
+                  {loading ? (
+                    <>
+                      <span className="loading loading-spinner loading-xs"></span>
+                      Logging out...
+                    </>
+                  ) : (
+                    "Logout"
+                  )}
+                </button>
               </li>
             </ul>
           </div>
