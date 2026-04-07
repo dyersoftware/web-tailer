@@ -14,4 +14,9 @@ export const tokenService = {
     localStorage.removeItem(ACCESS_TOKEN);
     localStorage.removeItem(REFRESH_TOKEN);
   },
+
+  isTokenValid: () => {
+    const accessToken = localStorage.getItem(ACCESS_TOKEN);
+    return !!accessToken; // Returns true if token exists, false otherwise
+  },
 };
