@@ -1,7 +1,7 @@
 export const pathsNavigation = {
   dashboard: "/dashboard",
   auth: {
-    login: "/auth/login",
+    login: "/",
     register: "/auth/register",
   },
 
