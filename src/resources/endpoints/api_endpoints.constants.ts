@@ -4,3 +4,7 @@ export const AUTH_PATHS = {
   REGISTER: `${apiUrl}/auth/register`,
   LOGOUT: `${apiUrl}/auth/logout`,
 };
+
+export const CUSTOMER_PATHS = {
+  ASSIGNED_CUSTOMERS: `${apiUrl}/customers/assigned-customers`,
+};
