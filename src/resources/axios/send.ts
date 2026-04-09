@@ -1,5 +1,4 @@
 import axiosInstance from "./axios";
-import { tokenService } from "./token";
 import type { AxiosRequestConfig, AxiosError } from "axios";
 
 export const httpClient = {
@@ -61,23 +60,31 @@ export const httpClient = {
 
 // Production-ready error handler
 async function handleApiError(error: AxiosError): Promise<void> {
-  // Handle 401 Unauthorized - clear tokens and redirect
-  if (error.response?.status === 401) {
-    try {
-      tokenService.clear();
-      // Use window.location for reliable redirect in production
-      window.location.href = "/";
-    } catch (clearError) {
-      // Fallback: ensure redirect happens even if token clearing fails
-      console.error("Failed to clear tokens:", clearError);
-      window.location.href = "/";
-    }
+  // Log safe error details without sensitive data
+  console.error("API Error:", {
+    message: error.message,
+    code: error.code,
+    status: error.response?.status,
+    url: error.config?.url,
+  });
+
+  // Handle network errors (no response from server)
+  if (!error.response) {
+    console.error("Network error detected");
+    throw new Error(
+      "Unable to connect to the server. Please check your internet connection or try again later.",
+    );
+  }
+
+  // 401 is already handled by the response interceptor (clears tokens and redirects)
+  // No need to throw an error for 401 as the user is being redirected
+  if (error.response.status === 401) {
     return;
   }
 
   // For other errors, let them bubble up with meaningful messages
   const message =
-    error.response?.data &&
+    error.response.data &&
     typeof error.response.data === "object" &&
     "message" in error.response.data
       ? (error.response.data as { message: string }).message

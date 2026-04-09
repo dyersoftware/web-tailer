@@ -5,7 +5,7 @@ import {
   getCoreRowModel,
   flexRender,
 } from "@tanstack/react-table";
-import { customersService } from "../services/customers.services";
+import { getAssignedCustomers } from "../services/customers.services";
 import type { ICustomer } from "../models/customers.models";
 
 const columns = [
@@ -20,21 +20,18 @@ function CustomersListComponents() {
   const [data, setData] = useState<ICustomer[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
+  const fetchCustomers = async () => {
+    try {
+      const customers = await getAssignedCustomers();
+      setData(customers);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to load customers");
+    } finally {
+      setLoading(false);
+    }
+  };
   useEffect(() => {
-    customersService
-      .getAssignedCustomers()
-      .then((customers) => {
-        setData(customers);
-      })
-      .catch((err) => {
-        setError(
-          err instanceof Error ? err.message : "Failed to load customers",
-        );
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    fetchCustomers();
   }, []);
 
   const table = useReactTable({

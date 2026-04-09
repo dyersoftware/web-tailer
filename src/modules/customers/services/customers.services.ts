@@ -1,12 +1,25 @@
 import { httpClient } from "../../../resources/axios/send";
 import { CUSTOMER_PATHS } from "../../../resources/endpoints/api_endpoints.constants";
-import type { ICustomer, ICustomersResponse } from "../models/customers.models";
+import type {
+  ICustomer,
+  ICustomersResponse,
+  IResRegisteredCustomerResponse,
+  ReqRegisterCustomerFormData,
+} from "../models/customers.models";
 
-export const customersService = {
-  async getAssignedCustomers(): Promise<ICustomer[]> {
-    const response = await httpClient.get<ICustomersResponse>(
-      CUSTOMER_PATHS.ASSIGNED_CUSTOMERS,
-    );
-    return response.data || [];
-  },
+export const getAssignedCustomers = async (): Promise<ICustomer[]> => {
+  const response = await httpClient.get<ICustomersResponse>(
+    CUSTOMER_PATHS.ASSIGNED_CUSTOMERS,
+  );
+  return response.data || [];
+};
+
+export const registerCustomers = async (
+  customerData: ReqRegisterCustomerFormData,
+): Promise<IResRegisteredCustomerResponse> => {
+  const response = await httpClient.post<IResRegisteredCustomerResponse>(
+    CUSTOMER_PATHS.REGISTER_CUSTOMER,
+    customerData,
+  );
+  return response || [];
 };

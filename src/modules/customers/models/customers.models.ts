@@ -14,3 +14,19 @@ export interface ICustomer {
 export interface ICustomersResponse extends GenericApiResponse {
   data: ICustomer[];
 }
+
+export interface ApiErrorResponse {
+  errors?: object;
+}
+
+export interface IResRegisteredCustomerResponse extends ApiErrorResponse {
+  status: boolean;
+  message: string;
+}
+
+export interface ReqRegisterCustomerFormData {
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+}
