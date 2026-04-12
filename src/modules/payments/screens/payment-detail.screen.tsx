@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { navigate_paths } from "../../../resources/routes/paths-navigation.routes";
-import { FaMoneyBill1 } from "react-icons/fa6";
+import { useParams } from "react-router-dom";
 import type { IPaymentDetail } from "../models/payment.models";
 import { getPaymentById } from "../services/payment.services";
 
