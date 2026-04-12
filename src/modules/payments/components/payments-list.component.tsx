@@ -52,7 +52,7 @@ function PaymentListComponent() {
       header: "Actions",
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       cell: ({ row }: any) => {
-        const order = row.original;
+        const payment = row.original;
 
         return (
           <div className="flex gap-2">
@@ -60,7 +60,7 @@ function PaymentListComponent() {
               className="btn btn-xs sm:btn-sm btn-primary"
               onClick={() =>
                 navigate(
-                  `${navigate_paths.orders_paths.orderDetails}/${order.id}`,
+                  `${navigate_paths.payments_paths.paymentDetails}/${payment.id}`,
                 )
               }
             >
