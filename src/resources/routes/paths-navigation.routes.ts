@@ -13,11 +13,11 @@ export const navigate_paths = {
   orders_paths: {
     orders: "/orders",
     createOrder: "/orders/create-order",
-    orderDetails: "/orders/order-detail/:id",
+    orderDetails: "/orders/order-detail",
   },
   payments_paths: {
     payments: "/payments",
     createPayment: "/payments/create-payment",
-    paymentDetails: "/payments/payment-detail/:id",
+    paymentDetails: "/payments/payment-detail",
   },
 };

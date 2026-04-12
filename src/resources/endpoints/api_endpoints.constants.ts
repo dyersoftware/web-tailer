@@ -10,3 +10,8 @@ export const CUSTOMER_PATHS = {
   REGISTER_CUSTOMER: `${apiUrl}/customers`,
   CUSTOMER_BY_ID: `${apiUrl}/customers`,
 };
+
+export const ORDER_PATHS = {
+  ORDERS: `${apiUrl}/orders`,
+  ORDER_BY_ID: `${apiUrl}/orders`,
+};

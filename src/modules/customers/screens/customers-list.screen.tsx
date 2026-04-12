@@ -19,12 +19,7 @@ function CustomersListScreen() {
           >
             order list
           </Link>
-          <Link
-            className="btn btn-primary text-white"
-            to={navigate_paths.orders_paths.createOrder}
-          >
-            create order
-          </Link>
+
           <Link
             className="btn btn-primary text-white"
             to={navigate_paths.orders_paths.orderDetails}
