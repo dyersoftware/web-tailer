@@ -18,3 +18,7 @@ export interface IOrder {
 export interface IResOrderList extends GenericApiResponse {
   data: IOrder[];
 }
+
+export interface IResOrderDetail extends GenericApiResponse {
+  data: IOrder;
+}

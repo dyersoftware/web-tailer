@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getCustomerById } from "../services/customers.services";
 import type { ICustomerDetails } from "../models/customers.models";
+import OrdersListComponents from "../../orders/components/orders-list.component";
+import { navigate_paths } from "../../../resources/routes/paths-navigation.routes";
+import { FaBagShopping } from "react-icons/fa6";
 
 export default function CustomerDetailsScreen() {
   const { id } = useParams();
@@ -42,7 +45,7 @@ export default function CustomerDetailsScreen() {
   if (!data) return null;
 
   return (
-    <div className="max-w-3xl mx-auto mt-10">
+    <div>
       {/* Header */}
       <div className="flex justify-between items-center">
         <h2 className="card-title text-2xl">👤 {data.name}</h2>
@@ -62,12 +65,30 @@ export default function CustomerDetailsScreen() {
         <Info label="Created At" value={formatDate(data.created_at)} />
         <Info label="Updated At" value={formatDate(data.updated_at)} />
       </div>
-
       {/* Actions */}
       <div className="card-actions justify-end mt-4">
         <button className="btn btn-outline btn-sm">Edit</button>
         <button className="btn btn-error btn-sm">Delete</button>
       </div>
+      {/* Order List */}
+      <div className="divider"></div>
+      <div className="flex justify-between items-center px-4 ">
+        <h2 className="card-title text-2xl">
+          <FaBagShopping />
+          Order List
+        </h2>
+        <div className="">
+          <div className="">
+            <Link
+              className="btn btn-primary text-white"
+              to={navigate_paths.orders_paths.createOrder}
+            >
+              Create Order
+            </Link>
+          </div>
+        </div>
+      </div>
+      <OrdersListComponents />
     </div>
   );
 }

@@ -15,3 +15,9 @@ export const ORDER_PATHS = {
   ORDERS: `${apiUrl}/orders`,
   ORDER_BY_ID: `${apiUrl}/orders`,
 };
+
+export const PAYMENT_PATHS = {
+  PAYMENTS: `${apiUrl}/payments`,
+  PAYMENT_BY_ID: `${apiUrl}/payments`,
+  PAYMENTS_BY_ORDER_ID: `${apiUrl}/payments/order`,
+};

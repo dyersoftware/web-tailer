@@ -5,13 +5,15 @@ import {
   getCoreRowModel,
   flexRender,
 } from "@tanstack/react-table";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { navigate_paths } from "../../../resources/routes/paths-navigation.routes";
 import { getOrders } from "../services/orders.services";
 import type { IOrder } from "../models/orders.models";
 
 function OrdersListComponents() {
+  const { id } = useParams();
+
   const [data, setData] = useState<IOrder[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -20,7 +22,7 @@ function OrdersListComponents() {
 
   const fetchOrders = async () => {
     try {
-      const orders = await getOrders();
+      const orders = await getOrders(Number(id));
       setData(orders);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to load orders");
@@ -31,7 +33,7 @@ function OrdersListComponents() {
 
   useEffect(() => {
     fetchOrders();
-  }, []);
+  }, [id]);
 
   const columns = [
     {
