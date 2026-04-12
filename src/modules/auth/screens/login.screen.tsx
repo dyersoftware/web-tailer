@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { pathsNavigation } from "../../../resources/routes/paths-navigation.routes";
+import { navigate_paths } from "../../../resources/routes/paths-navigation.routes";
 import { login } from "../services/auth.services";
 import { tokenService } from "../../../resources/axios/token";
 import { AiOutlineMail, AiOutlineLock } from "react-icons/ai";
@@ -20,7 +20,7 @@ function LoginScreen() {
   // Check for valid token on component mount
   useEffect(() => {
     if (tokenService.isTokenValid()) {
-      navigate(pathsNavigation.dashboard, { replace: true });
+      navigate(navigate_paths.dashboard, { replace: true });
     }
   }, [navigate]);
 
@@ -68,7 +68,7 @@ function LoginScreen() {
 
       // Navigate after a brief delay to show success feedback
       setTimeout(() => {
-        navigate(pathsNavigation.dashboard, { replace: true });
+        navigate(navigate_paths.dashboard, { replace: true });
       }, 500);
     } catch (error) {
       const errorMessage =

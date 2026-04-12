@@ -5,6 +5,8 @@ import ProtectedLayout from "../layouts/protected.layout";
 import authRoutes from "../../modules/auth/routes/auth.routes";
 import dashboardRoutes from "../../modules/dashboard/routes/dashboard.routes";
 import customersRoutes from "../../modules/customers/routes/customers.routes";
+import ordersRoutes from "../../modules/orders/routes/orders.routes";
+import paymentsRoutes from "../../modules/payments/routes/payment.routes";
 
 function MainRoutes() {
   return (
@@ -25,6 +27,16 @@ function MainRoutes() {
         </Route>
         <Route path="customers" element={<DashboardLayout />}>
           {customersRoutes.map((route, i) => (
+            <Route key={i} {...route} />
+          ))}
+        </Route>
+        <Route path="orders" element={<DashboardLayout />}>
+          {ordersRoutes.map((route, i) => (
+            <Route key={i} {...route} />
+          ))}
+        </Route>
+        <Route path="payments" element={<DashboardLayout />}>
+          {paymentsRoutes.map((route, i) => (
             <Route key={i} {...route} />
           ))}
         </Route>

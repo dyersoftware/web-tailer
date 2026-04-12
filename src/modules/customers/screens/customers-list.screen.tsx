@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { pathsNavigation } from "../../../resources/routes/paths-navigation.routes";
+import { navigate_paths } from "../../../resources/routes/paths-navigation.routes";
 import CustomersListComponents from "../components/customers-list.component";
 
 function CustomersListScreen() {
@@ -9,9 +9,46 @@ function CustomersListScreen() {
         <div className="">
           <Link
             className="btn btn-primary text-white"
-            to={pathsNavigation.customers_paths.registerCustomer}
+            to={navigate_paths.customers_paths.registerCustomer}
           >
             Register Customer
+          </Link>
+          <Link
+            className="btn btn-primary text-white"
+            to={navigate_paths.orders_paths.orders}
+          >
+            order list
+          </Link>
+          <Link
+            className="btn btn-primary text-white"
+            to={navigate_paths.orders_paths.createOrder}
+          >
+            create order
+          </Link>
+          <Link
+            className="btn btn-primary text-white"
+            to={navigate_paths.orders_paths.orderDetails}
+          >
+            order details
+          </Link>
+
+          <Link
+            className="btn btn-primary text-white"
+            to={navigate_paths.payments_paths.payments}
+          >
+            payment List
+          </Link>
+          <Link
+            className="btn btn-primary text-white"
+            to={navigate_paths.payments_paths.paymentDetails}
+          >
+            payment details
+          </Link>
+          <Link
+            className="btn btn-primary text-white"
+            to={navigate_paths.payments_paths.createPayment}
+          >
+            payment create
           </Link>
         </div>
       </div>

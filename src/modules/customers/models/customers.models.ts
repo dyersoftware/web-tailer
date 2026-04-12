@@ -17,11 +17,12 @@ export interface ICustomersResponse extends GenericApiResponse {
 
 export interface ApiErrorResponse {
   errors?: object;
+  status?: boolean;
+  message?: string;
 }
 
 export interface IResRegisteredCustomerResponse extends ApiErrorResponse {
-  status: boolean;
-  message: string;
+  data?: object;
 }
 
 export interface ReqRegisterCustomerFormData {
@@ -30,4 +31,19 @@ export interface ReqRegisterCustomerFormData {
   phone: string;
   address?: string;
   others?: string;
+}
+
+export interface IResCustomerDetails extends ApiErrorResponse {
+  data: ICustomerDetails;
+}
+
+export interface ICustomerDetails {
+  id: string;
+  name: string;
+  email?: string;
+  phone: string;
+  address: string;
+  created_at: string;
+  updated_at: string;
+  admin_user_id: string;
 }

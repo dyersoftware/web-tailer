@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../modules/auth/services/auth.services";
-import { pathsNavigation } from "../routes/paths-navigation.routes";
+import { navigate_paths } from "../routes/paths-navigation.routes";
 
 export const useLogout = () => {
   const [loading, setLoading] = useState(false);
@@ -15,7 +15,7 @@ export const useLogout = () => {
     try {
       await logout();
       // Redirect to login page after successful logout
-      navigate(pathsNavigation.auth.login, { replace: true });
+      navigate(navigate_paths.auth.login, { replace: true });
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : "Logout failed";
       setError(errorMessage);

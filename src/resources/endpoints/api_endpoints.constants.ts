@@ -8,4 +8,5 @@ export const AUTH_PATHS = {
 export const CUSTOMER_PATHS = {
   ASSIGNED_CUSTOMERS: `${apiUrl}/customers/assigned-customers`,
   REGISTER_CUSTOMER: `${apiUrl}/customers`,
+  CUSTOMER_BY_ID: `${apiUrl}/customers`,
 };

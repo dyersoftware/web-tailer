@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { pathsNavigation } from "../../../resources/routes/paths-navigation.routes";
+import { navigate_paths } from "../../../resources/routes/paths-navigation.routes";
 
 function CardComponent() {
   return (
@@ -13,7 +13,7 @@ function CardComponent() {
         <div className="justify-end card-actions">
           <Link
             className="btn btn-primary text-white"
-            to={pathsNavigation.customers_paths.customers}
+            to={navigate_paths.customers_paths.customers}
           >
             Visit
           </Link>

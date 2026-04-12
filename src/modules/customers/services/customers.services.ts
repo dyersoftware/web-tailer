@@ -3,6 +3,7 @@ import { CUSTOMER_PATHS } from "../../../resources/endpoints/api_endpoints.const
 import type {
   ICustomer,
   ICustomersResponse,
+  IResCustomerDetails,
   IResRegisteredCustomerResponse,
   ReqRegisterCustomerFormData,
 } from "../models/customers.models";
@@ -20,6 +21,15 @@ export const registerCustomers = async (
   const response = await httpClient.post<IResRegisteredCustomerResponse>(
     CUSTOMER_PATHS.REGISTER_CUSTOMER,
     customerData,
+  );
+  return response || [];
+};
+
+export const getCustomerById = async (
+  customerId: string,
+): Promise<IResCustomerDetails> => {
+  const response = await httpClient.get<IResCustomerDetails>(
+    `${CUSTOMER_PATHS.CUSTOMER_BY_ID}/${customerId}`,
   );
   return response || [];
 };

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate, Outlet } from "react-router-dom";
 import { tokenService } from "../axios/token";
-import { pathsNavigation } from "../routes/paths-navigation.routes";
+import { navigate_paths } from "../routes/paths-navigation.routes";
 
 function ProtectedLayout() {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ function ProtectedLayout() {
     // Check if token exists
     if (!tokenService.isTokenValid()) {
       // Redirect to login if no token
-      navigate(pathsNavigation.auth.login, { replace: true });
+      navigate(navigate_paths.auth.login, { replace: true });
     }
   }, [navigate]);
 
